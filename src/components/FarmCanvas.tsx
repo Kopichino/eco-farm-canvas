@@ -64,6 +64,29 @@ export function FarmCanvas({ plots, onPlotClick, selectedCrop }: FarmCanvasProps
         ctx.lineWidth = 3;
         ctx.strokeRect(x + 2, y + 2, PLOT_SIZE - 4, PLOT_SIZE - 4);
       }
+      
+      // Draw pest damage
+      if (plot.pestDamage > 0) {
+        ctx.fillStyle = `rgba(239, 68, 68, ${plot.pestDamage / 200})`;
+        ctx.fillRect(x, y, PLOT_SIZE, PLOT_SIZE);
+        if (plot.pestDamage > 50) {
+          ctx.fillStyle = '#dc2626';
+          ctx.font = '16px sans-serif';
+          ctx.fillText('🐛', x + 5, y + 20);
+        }
+      }
+      
+      // Draw protection/fertilizer indicators
+      if (plot.hasProtection) {
+        ctx.fillStyle = '#22c55e';
+        ctx.font = '12px sans-serif';
+        ctx.fillText('🛡️', x + PLOT_SIZE - 20, y + 20);
+      }
+      if (plot.fertilized) {
+        ctx.fillStyle = '#84cc16';
+        ctx.font = '12px sans-serif';
+        ctx.fillText('✨', x + PLOT_SIZE - 20, y + PLOT_SIZE - 10);
+      }
     }
     
     // Draw plot border

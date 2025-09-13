@@ -2,6 +2,7 @@ export type CropType = 'corn' | 'wheat' | 'rice' | 'coconut';
 export type SoilType = 'clay' | 'loam' | 'sandy' | 'silt';
 export type IrrigationType = 'drip' | 'rainwater' | 'flood';
 export type WeatherCondition = 'sunny' | 'rainy' | 'cloudy' | 'stormy';
+export type TreatmentType = 'pesticide' | 'fertilizer';
 
 export interface CropInfo {
   type: CropType;
@@ -26,6 +27,9 @@ export interface Plot {
   soilType: SoilType;
   health: number; // 0-100
   harvestReady: boolean;
+  hasProtection: boolean; // pesticide protection
+  fertilized: boolean;
+  pestDamage: number; // 0-100
 }
 
 export interface Weather {
@@ -39,6 +43,12 @@ export interface Weather {
 export interface ScheduledIrrigation {
   day: number;
   type: IrrigationType;
+  plotIds: string[];
+}
+
+export interface ScheduledTreatment {
+  day: number;
+  type: TreatmentType;
   plotIds: string[];
 }
 
@@ -56,6 +66,7 @@ export interface GameState {
   currentDay: number;
   weather: Weather;
   scheduledIrrigations: ScheduledIrrigation[];
+  scheduledTreatments: ScheduledTreatment[];
   ecoScore: EcoScore;
   totalWaterUsed: number;
   totalCropsHarvested: number;
