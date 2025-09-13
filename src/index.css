@@ -8,51 +8,78 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Earth & Nature Colors */
+    --background: 47 20% 96%;
+    --foreground: 25 20% 20%;
+    
+    /* Rich soil brown */
+    --card: 42 25% 94%;
+    --card-foreground: 25 20% 20%;
+    
+    --popover: 47 20% 96%;
+    --popover-foreground: 25 20% 20%;
+    
+    /* Vibrant green for primary actions */
+    --primary: 142 70% 45%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Warm earth tone */
+    --secondary: 30 40% 80%;
+    --secondary-foreground: 25 20% 20%;
+    
+    --muted: 35 20% 88%;
+    --muted-foreground: 25 15% 40%;
+    
+    /* Sky blue accent */
+    --accent: 200 70% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 35 20% 82%;
+    --input: 35 20% 85%;
+    --ring: 142 70% 45%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom Design Tokens */
+    --soil-dark: 25 35% 25%;
+    --soil-medium: 25 30% 40%;
+    --soil-light: 30 25% 55%;
+    
+    --crop-corn: 48 85% 55%;
+    --crop-wheat: 38 75% 60%;
+    --crop-rice: 120 40% 70%;
+    --crop-coconut: 30 40% 45%;
+    
+    --water-blue: 200 80% 60%;
+    --sun-yellow: 45 95% 55%;
+    --rain-gray: 210 15% 70%;
+    
+    /* Gradients */
+    --gradient-sky: linear-gradient(180deg, hsl(200 80% 70%), hsl(200 60% 85%));
+    --gradient-soil: linear-gradient(180deg, hsl(25 30% 35%), hsl(25 25% 45%));
+    --gradient-grass: linear-gradient(135deg, hsl(120 60% 50%), hsl(142 70% 45%));
+    --gradient-sunset: linear-gradient(135deg, hsl(30 80% 60%), hsl(45 90% 65%));
+    
+    /* Shadows */
+    --shadow-plot: 0 2px 8px hsl(25 35% 25% / 0.3);
+    --shadow-card: 0 4px 12px hsl(25 35% 25% / 0.15);
+    --shadow-glow: 0 0 20px hsl(142 70% 45% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-grow: grow 0.5s ease-out;
+    
+    --sidebar-background: 42 25% 94%;
+    --sidebar-foreground: 25 20% 20%;
+    --sidebar-primary: 142 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 35 20% 88%;
+    --sidebar-accent-foreground: 25 20% 20%;
+    --sidebar-border: 35 20% 82%;
+    --sidebar-ring: 142 70% 45%;
   }
 
   .dark {
@@ -101,5 +128,35 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes grow {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.6);
+    }
+  }
+  
+  .animate-grow {
+    animation: grow 0.5s ease-out;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
   }
 }

@@ -57,6 +57,31 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        soil: {
+          dark: "hsl(var(--soil-dark))",
+          medium: "hsl(var(--soil-medium))",
+          light: "hsl(var(--soil-light))",
+        },
+        crop: {
+          corn: "hsl(var(--crop-corn))",
+          wheat: "hsl(var(--crop-wheat))",
+          rice: "hsl(var(--crop-rice))",
+          coconut: "hsl(var(--crop-coconut))",
+        },
+        water: "hsl(var(--water-blue))",
+        sun: "hsl(var(--sun-yellow))",
+        rain: "hsl(var(--rain-gray))",
+      },
+      backgroundImage: {
+        'gradient-sky': 'var(--gradient-sky)',
+        'gradient-soil': 'var(--gradient-soil)',
+        'gradient-grass': 'var(--gradient-grass)',
+        'gradient-sunset': 'var(--gradient-sunset)',
+      },
+      boxShadow: {
+        'plot': 'var(--shadow-plot)',
+        'card-soft': 'var(--shadow-card)',
+        'glow': 'var(--shadow-glow)',
       },
       borderRadius: {
         lg: "var(--radius)",
